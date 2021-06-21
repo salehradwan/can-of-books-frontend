@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { withAuth0 } from "@auth0/auth0-react";
+import BestBooks from './components/BestBooks';
+import axios from 'axios';
+
 
 export class Profile extends Component {
     constructor(props) {
@@ -7,15 +10,38 @@ export class Profile extends Component {
         this.state = {
             userName: this.props.auth0.user.name,
             userEmail: this.props.auth0.user.email,
-            userPicture: this.props.auth0.user.picture
+            userPicture: this.props.auth0.user.picture,
+            serverUrl: process.env.REACT_APP_PORT,
+            booksData: []
         }
+    }
+    componentDidMount = () => {
+        axios.get(`${this.state.serverUrl}/books?email=${this.state.userEmail}`).then(response => {
+            this.setState({
+                booksData: response.data[0].books
+            })
+        }).catch(
+            error => {
+                alert(error.message);
+            }
+        );
     }
     render() {
         return (
             <div>
-                <h2>{this.state.userName}</h2>
-                <p>{this.state.userEmail}</p>
-                <img src={this.state.userPicture} alt={this.state.userName} />
+                <div>
+                    <h2>{this.state.userName}</h2>
+                    <p>{this.state.userEmail}</p>
+                    <img src={this.state.userPicture} alt={this.state.userName} />
+                </div>
+                {
+                    this.state.booksData.length > 0 &&
+                    <div>
+                        <BestBooks
+                            books={this.state.booksData}
+                        />
+                    </div>
+                }
             </div>
         )
     }
