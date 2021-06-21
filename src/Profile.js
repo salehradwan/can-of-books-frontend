@@ -11,7 +11,7 @@ export class Profile extends Component {
             userName: this.props.auth0.user.name,
             userEmail: this.props.auth0.user.email,
             userPicture: this.props.auth0.user.picture,
-            serverUrl: process.env.REACT_APP_PORT,
+            serverUrl: process.env.REACT_APP_SERVER_URL,
             booksData: []
         }
     }
