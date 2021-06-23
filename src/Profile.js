@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withAuth0 } from "@auth0/auth0-react";
-import MyFavoriteBooks from './MyFavoriteBooks';
 
 
 export class Profile extends Component {
@@ -21,7 +20,6 @@ export class Profile extends Component {
                     <p>{this.state.userEmail}</p>
                     <img src={this.state.userPicture} alt={this.state.userName} />
                 </div>
-                <MyFavoriteBooks />
             </div>
         )
     }

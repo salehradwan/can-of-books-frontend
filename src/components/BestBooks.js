@@ -6,7 +6,7 @@ class BestBooks extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            serverUrl: process.env.REACT_APP_PORT,
+            serverUrl: process.env.REACT_APP_SERVER_URL,
             userEmail: this.props.auth0.user.email,
             booksData: []
         }
