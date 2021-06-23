@@ -7,7 +7,7 @@ import Login from './Login';
 import Logout from './components/Logout';
 import Profile from './Profile';
 import { withAuth0 } from '@auth0/auth0-react';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
   render() {
     console.log('app', this.props);
@@ -28,11 +28,6 @@ class App extends React.Component {
               {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
               {isAuthenticated &&
                 <Profile />
-              }
-            </Route>
-            <Route exact path="/MyFavoriteBooks">
-              {isAuthenticated &&
-                <MyFavoriteBooks />
               }
             </Route>
             <Route exact path="/Login">

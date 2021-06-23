@@ -15,8 +15,7 @@ class Header extends React.Component {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Brand>My Favorite Books</Navbar.Brand>
           <Link to="/">Home</Link>
-          <Link to="/Profile">Profile</Link>
-          <Link to="/MyFavouriteBook">My Favourite Book</Link>
+          {isAuthenticated && <Link to="/Profile">Profile</Link> }
           {
             isAuthenticated ? <Logout /> : <LoginButton />
           }
